@@ -1,6 +1,6 @@
 package com.tomtresansky.projecteuler.problem02
 
-class Solver02 {
+class Solver2Mark1 {
   def sum = 0;
 
   def nextFib = {
@@ -8,4 +8,3 @@ class Solver02 {
   }
 }
 
-nextFib(0, 1)

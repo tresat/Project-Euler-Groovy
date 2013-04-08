@@ -1,6 +1,6 @@
-package com.tomtresansky.projecteuler.problem1
+package com.tomtresansky.projecteuler.problem01
 
-class Problem1Solver1 {
+class Solver1Mark1 {
   static void main(String... args) {
     println ("\nProblem 1: " + solve())
   }
