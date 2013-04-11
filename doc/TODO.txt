@@ -1,0 +1,8 @@
+-Extract solve to an interface
+
+-Add slf4j
+add a default logging on method which will enable the debug output in solutions currently commented out
+
+-Add unit tests (which capture expected answers)
+
+-Refactor out primeFactorization functionality to a util section
