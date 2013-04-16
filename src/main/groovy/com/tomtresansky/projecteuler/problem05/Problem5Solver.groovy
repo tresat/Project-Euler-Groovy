@@ -1,5 +1,7 @@
 package com.tomtresansky.projecteuler.problem05
 
-interface Problem5Solver {
+import com.tomtresansky.projecteuler.ProblemSolver
+
+interface Problem5Solver extends ProblemSolver {
   BigInteger solve();
 }
