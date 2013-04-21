@@ -3,7 +3,7 @@ package com.tomtresansky.projecteuler.util
 class PrimeFactorizer {
   PrimeGenerator p = new PrimeGenerator()
 
-  public primeFactorize(x) {
+  def Map primeFactorize(x) {
     BigInteger remaining = x
     def factors = [:].withDefault{0}
 
