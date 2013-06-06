@@ -27,9 +27,9 @@ class Problem11SolverMark1 extends AbstractProblemSolver implements Problem11Sol
         val, acc -> acc *= val
       }
     }
-    def maxProduct = productMap.keySet().max()
 
-    [(maxProduct):productMap[maxProduct]]
+    //println [(maxProduct):productMap[maxProduct]]
+    def maxProduct = productMap.keySet().max()
   }
 
   @Override
@@ -54,7 +54,7 @@ class Problem11SolverMark1 extends AbstractProblemSolver implements Problem11Sol
         04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36 \
         20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16 \
         20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54 \
-        01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48".split(" ").collect { Integer.valueOf(it) }.collate(20)
+        01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48".split(/\s+/).collect { Integer.valueOf(it) }.collate(20)
 
     def horizontalGroups = nums.collect {
       row -> row.collate(4, 1, false)
@@ -80,7 +80,7 @@ class Problem11SolverMark1 extends AbstractProblemSolver implements Problem11Sol
     def diagGroups2 = diagonalize(reversedNums)
 
     def m = [Horizontal:maxProduct(horizontalGroups), Vertical:maxProduct(verticalGroups), Diagonal1:maxProduct(diagGroups1), Diagonal2:maxProduct(diagGroups2)]
-    println m
+    //println m
 
     maxProduct(horizontalGroups + verticalGroups + diagGroups1 + diagGroups2)
   }

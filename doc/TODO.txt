@@ -10,3 +10,5 @@ add a default logging on method which will enable the debug output in solutions 
 
 PROBLEM 4
 -alternate solution: list w/ generator
+
+-fix long-running problem 10, re-include in master sweet.
