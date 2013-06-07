@@ -4,13 +4,13 @@ import com.tomtresansky.projecteuler.AbstractProblemSolver
 import com.tomtresansky.projecteuler.util.PrimeFactorizer
 
 class Problem5SolverMark1 extends AbstractProblemSolver implements Problem5Solver {
-  private PrimeFactorizer f = new PrimeFactorizer()
+  private PrimeFactorizer pf = new PrimeFactorizer()
 
   BigInteger minNumDivisibleByAllNumsUnder(int x) {
-    def compositeFactors = [:].withDefault {1}
+    def compositeFactors = [1:1].withDefault {1}
 
-    for (i in 1..x) {
-      f.primeFactorize(i).each { k, v ->
+    for (i in 2..x) {
+      pf.primeFactorize(i).each { k, v ->
         if (v > compositeFactors[k]) {
           compositeFactors[k] = v
         }
