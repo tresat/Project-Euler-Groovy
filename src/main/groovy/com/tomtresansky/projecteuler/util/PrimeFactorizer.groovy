@@ -16,7 +16,7 @@ class PrimeFactorizer {
         def factor = p.primes[i]
         if (remaining.remainder(factor) == 0) {
           remaining = remaining / factor
-          factors[factor]+=1
+          factors[factor] += 1
           //println "found ${factor}, remaining ${remaining}"
           i = 0
         } else {
