@@ -5,7 +5,7 @@ import com.tomtresansky.projecteuler.AbstractProblemSolver
 class Problem13SolverMark1 extends AbstractProblemSolver implements Problem13Solver {
   @Override
   public Integer getProblemNumber() {
-    return 13;
+    return 13
   }
 
   @Override
@@ -116,7 +116,7 @@ class Problem13SolverMark1 extends AbstractProblemSolver implements Problem13Sol
     def sum = nums.sum()
     def first10 = sum.toString()[0..<10]
 
-    return new BigInteger(first10);
+    return new BigInteger(first10)
   }
 
   static void main(String... args) {
