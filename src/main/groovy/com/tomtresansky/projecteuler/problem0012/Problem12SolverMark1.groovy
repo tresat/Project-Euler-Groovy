@@ -15,7 +15,6 @@ class Problem12SolverMark1 extends AbstractProblemSolver implements Problem12Sol
 
   @Override
   BigInteger solve() {
-
     def i = 2
     while (true) {
       BigInteger t = tng.triangularNums[i]
