@@ -1,6 +1,6 @@
 package com.tomtresansky.projecteuler.problem0001
 
-import com.tomtresansky.projecteuler.AbstractProblemSolverTest;
+import com.tomtresansky.projecteuler.AbstractProblemSolverTest
 import com.tomtresansky.projecteuler.ProblemSolver
 
 class Problem1SolverMark1Test extends AbstractProblemSolverTest {

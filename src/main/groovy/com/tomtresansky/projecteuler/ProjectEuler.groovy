@@ -15,6 +15,9 @@ import com.tomtresansky.projecteuler.problem0011.Problem11SolverMark1
 import com.tomtresansky.projecteuler.problem0012.Problem12SolverMark1
 import com.tomtresansky.projecteuler.problem0013.Problem13SolverMark1
 import com.tomtresansky.projecteuler.problem0014.Problem14SolverMark1
+import com.tomtresansky.projecteuler.problem0015.Problem15SolverMark2
+import com.tomtresansky.projecteuler.problem0016.Problem16SolverMark1
+import com.tomtresansky.projecteuler.problem0017.Problem17SolverMark1
 
 class ProjectEuler {
   static void main(String... args) {
@@ -32,7 +35,10 @@ class ProjectEuler {
       new Problem11SolverMark1(),
       new Problem12SolverMark1(),
       new Problem13SolverMark1(),
-      new Problem14SolverMark1()
+      new Problem14SolverMark1(),
+      new Problem15SolverMark2(),
+      new Problem16SolverMark1(),
+      new Problem17SolverMark1()
     ]
 
     File timings = new File("doc${File.separator}timings-${new SimpleDateFormat('yyyy-MM-dd-hh_mm_ss').format(new Date())}.txt")

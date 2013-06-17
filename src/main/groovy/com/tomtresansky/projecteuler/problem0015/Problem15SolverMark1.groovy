@@ -2,6 +2,23 @@ package com.tomtresansky.projecteuler.problem0015
 
 import com.tomtresansky.projecteuler.AbstractProblemSolver
 
+
+/**
+ * This is FUNCTIONAL, but extremely long-running and memory intense for grids bigger than 12x12.
+ *
+ 1 -> 2
+ 2 -> 6
+ 3 -> 20
+ 4 -> 70
+ 5 -> 252
+ 6 -> 924
+ 7 -> 3432
+ 8 -> 12870
+ 9 -> 48620
+ 10 -> 184756
+ 11 -> 705432
+ 12 -> 2704156
+ */
 class Problem15SolverMark1 extends AbstractProblemSolver implements Problem15Solver {
   @Override
   public Integer getProblemNumber() {
@@ -9,22 +26,19 @@ class Problem15SolverMark1 extends AbstractProblemSolver implements Problem15Sol
   }
 
   private findPaths(int n) {
-    assert 1 < n
+    assert 0 < n
 
-    def x = ['_']*n
-    def y = ['|']*n
-
-    def tree = new SolutionTree(x, y)
-    tree.print()
+    def tree = new SolutionTree(n, n)
+    //tree.print()
 
     def paths = tree.getPaths()
-    println paths
+    //println paths
     return paths.size()
   }
 
   @Override
   BigInteger solve() {
-    return findPaths(2)
+    return findPaths(20)
   }
 
   static void main(String... args) {
@@ -34,31 +48,31 @@ class Problem15SolverMark1 extends AbstractProblemSolver implements Problem15Sol
   private static final class SolutionTree {
     private roots = []
 
-    SolutionTree(List xTotal, List yTotal) {
-      Node r1 = new Node(val:xTotal[0])
-      buildTreeRec(r1, new ArrayList(xTotal - 1), yTotal)
+    SolutionTree(def xTotal, def yTotal) {
+      Node r1 = new Node(val:'_')
+      buildTreeRec(r1, xTotal - 1, yTotal)
       roots << r1
 
-      Node r2 = new Node(val:yTotal[0])
-      buildTreeRec(r2, xTotal, new ArrayList(yTotal - 1))
+      Node r2 = new Node(val:'|')
+      buildTreeRec(r2, xTotal, yTotal - 1)
       roots << r2
     }
 
-    private buildTreeRec(Node n, List xLeft, List yLeft) {
-      println "building tree for $n with $xLeft, $yLeft"
+    private buildTreeRec(Node n, def xLeft, def yLeft) {
+      //println "building tree for $n with $xLeft, $yLeft"
 
-      if (!xLeft.isEmpty()) {
-        Node newNode = new Node(val:xLeft[0])
+      if (xLeft > 0) {
+        Node newNode = new Node(val:'_')
         n.children << newNode
 
-        buildTreeRec(newNode, new ArrayList(xLeft - 1), yLeft)
+        buildTreeRec(newNode, xLeft - 1, yLeft)
       }
 
-      if (!yLeft.isEmpty()) {
-        Node newNode = new Node(val:yLeft[0])
+      if (yLeft > 0) {
+        Node newNode = new Node(val:'|')
         n.children << newNode
 
-        buildTreeRec(newNode, xLeft, new ArrayList(yLeft - 1))
+        buildTreeRec(newNode, xLeft, yLeft - 1)
       }
     }
 
@@ -72,21 +86,23 @@ class Problem15SolverMark1 extends AbstractProblemSolver implements Problem15Sol
     }
 
     List getPaths() {
-      roots.collect { r -> getPathsRec(r, []) }
+      def result = []
+      roots.each { r -> getPathsRec(r, [], result) }
+      return result
     }
 
-    private List getPathsRec(Node n, List currPath) {
-      println "At: $n, path to here: $currPath"
+    private void getPathsRec(Node n, List currPath, List finalPath) {
+      //println "At: $n, path to here: $currPath"
 
       def results = currPath.clone()
       results << n.val
 
       if (!n.children.isEmpty()) {
-        println "Recursing with current path: $results"
-        results = n.children.collect { c -> getPathsRec(c, results) }
+        //println "Recursing with current path: $results"
+        n.children.each { c -> getPathsRec(c, results, finalPath) }
+      } else {
+        finalPath << results
       }
-
-      return results
     }
 
     private static final class Node {
@@ -94,7 +110,7 @@ class Problem15SolverMark1 extends AbstractProblemSolver implements Problem15Sol
 
       private id = idGen++
       private val
-      private children = []
+      private children = new ArrayList(2);
 
       @Override
       public String toString() {
